@@ -7,7 +7,8 @@ import mercatrans.model.collections.Usuario;
 
 public interface UsuarioService extends UserDetailsService{
 	
-	Usuario buscarUsuario(String username);
-	Usuario buscarPorUsernamePassword(String username, String password);
+	Usuario buscarPorEmail(String email);
+	Usuario buscarPorUsernamePassword(String e, String password);
 	Usuario altaUsuario(Usuario usuario);
+    boolean existsByEmail(String email);
 }

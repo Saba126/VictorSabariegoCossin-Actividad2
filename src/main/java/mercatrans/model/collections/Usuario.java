@@ -18,6 +18,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mercatrans.model.collections.dto.UsuarioLoginDto;
+import mercatrans.model.collections.dto.UsuarioRegisterDto;
 
 @Data
 @NoArgsConstructor
@@ -45,14 +47,24 @@ public class Usuario implements UserDetails{
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + this.rol.name()));
+        return List.of(new SimpleGrantedAuthority(this.rol.name()));
 	}
 	@Override
-	public @Nullable String getPassword() {
+	public String getPassword() {
 		return this.contrasena;
 	}
 	@Override
 	public String getUsername() {
 		return this.nombre;
 	}
+	
+    public static Usuario convertRegisterDtoToUser(UsuarioRegisterDto dto) {
+    	Usuario user = Usuario.builder()
+    			.nombre(dto.getNombre())
+    			.email(dto.getEmail())
+    			.contrasena(dto.getContrasena())
+    			.rol(dto.getRol())
+    			.build();
+        return user;
+    }
 }

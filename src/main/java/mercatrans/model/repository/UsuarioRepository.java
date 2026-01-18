@@ -9,8 +9,9 @@ import mercatrans.model.collections.Usuario;
 
 public interface UsuarioRepository extends MongoRepository<Usuario, ObjectId>{
 
-	Usuario findByUsername(String username);
-
+	Optional<Usuario> findByNombre(String username);
+	Optional<Usuario> findByEmail(String email);
+    boolean existsByEmail(String email);
 	Usuario findByNombreAndContrasena(String username, String password);
 	
 }
