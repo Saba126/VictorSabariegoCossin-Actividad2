@@ -48,5 +48,6 @@ public interface UsuarioRepository extends MongoRepository<Usuario, ObjectId>{
 	 * @return El usuario si se encuentra, o null en caso contrario.
 	 */
 	Usuario findByNombreAndContrasena(String username, String password);
+	
 
 }

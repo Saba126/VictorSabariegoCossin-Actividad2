@@ -3,6 +3,7 @@ package mercatrans.model.collections;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -17,7 +18,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 
-
 @Document(collection="camiones")
 public class Camion {
 	
@@ -30,7 +30,9 @@ public class Camion {
 	@JsonSerialize(using = ToStringSerializer.class)
 	private ObjectId id;
 	
+	@Field("conductorId")
 	private ObjectId conductorId;
+	
 	private String matricula;
 	private String modelo;
 	private int capacidadKg;

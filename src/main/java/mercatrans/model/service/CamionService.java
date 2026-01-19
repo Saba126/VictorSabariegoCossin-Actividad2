@@ -1,14 +1,16 @@
-package mercatrans.model.repository;
+package mercatrans.model.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import mercatrans.model.collections.Camion;
 import mercatrans.model.collections.Camion.Estado;
 
-public interface CamionRepository extends MongoRepository<Camion, ObjectId>{
+public interface CamionService {
+	Optional<Camion> findById(ObjectId Id);
+	List<Camion> findAll();
 	List<Camion> findByConductorIdAndEstado(ObjectId camioneroId, Estado estado);
 }
