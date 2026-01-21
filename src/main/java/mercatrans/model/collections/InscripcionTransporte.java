@@ -33,8 +33,8 @@ public class InscripcionTransporte {
 	@JsonSerialize(using = ToStringSerializer.class)
 	private ObjectId id;
 	
-	private Camion camionId;
-	private Mercancia mercanciaId;
+	private ObjectId camionId;
+	private ObjectId mercanciaId;
 	private LocalDate fechaInscripcion;
 	private Estado estado;
 }

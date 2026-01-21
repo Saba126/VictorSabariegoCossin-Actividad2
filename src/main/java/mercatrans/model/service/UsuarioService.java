@@ -1,5 +1,8 @@
 package mercatrans.model.service;
 
+import java.util.Optional;
+
+import org.bson.types.ObjectId;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import mercatrans.model.collections.Usuario;
@@ -46,4 +49,8 @@ public interface UsuarioService extends UserDetailsService{
 	 * @return true si existe un usuario con ese correo, false en caso contrario.
 	 */
     boolean existsByEmail(String email);
+    
+    Optional<Usuario> conductorPorId(ObjectId id);
+    
+    Usuario buscarPorIdCamioneros(ObjectId id);
 }

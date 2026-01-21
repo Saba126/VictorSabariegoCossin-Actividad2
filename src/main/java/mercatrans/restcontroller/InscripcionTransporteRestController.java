@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import mercatrans.seguridad.JwtSecurityService;
 import mercatrans.model.collections.dto.UsuarioRegisterDto;
 import mercatrans.model.service.CamionService;
+import mercatrans.model.service.InscripcionTranspoerteService;
 import mercatrans.model.service.UsuarioService;
 import mercatrans.model.collections.Usuario;
 import mercatrans.model.collections.Camion;
@@ -27,23 +28,14 @@ import mercatrans.model.collections.dto.UsuarioLoginDto;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping("/camiones")
-public class CamionRestController {
+@RequestMapping("/inscripcion-transporte")
+public class InscripcionTransporteRestController {
 
 	@Autowired
-	private CamionService camionServ;
+	private InscripcionTranspoerteService inscripcionServ;
 	
-
-	@GetMapping("/todos")
-	public ResponseEntity<?> allCamiones(){
-		return ResponseEntity.status(200).body(camionServ.findAll());			
-	}
-
-	@GetMapping("/{conductorId}-{estado}")
-	public ResponseEntity<?> camionesPorConductorYEstado(
-			@PathVariable("conductorId") ObjectId camioneroId,
-			@PathVariable("estado") Estado estado
-	) {		
-		return ResponseEntity.status(302).body(camionServ.findByConductorIdAndEstado(camioneroId, estado));	
+	@GetMapping("/{mercanciaId}")
+	public ResponseEntity<?> findByMercanciaId(@PathVariable ObjectId mercanciaId){
+		return ResponseEntity.status(200).body(inscripcionServ.findByMercanciaId(mercanciaId));			
 	}
 }

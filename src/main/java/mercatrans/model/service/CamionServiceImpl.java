@@ -23,15 +23,27 @@ public class CamionServiceImpl implements CamionService{
 
 	@Autowired
 	private CamionRepository camionRepo;
+	
+	@Autowired
+	private UsuarioService usuarioServ;
 
 	@Override
 	public Optional<Camion> findById(ObjectId Id) {
 		return camionRepo.findById(Id);
 	}
-
+	
 	@Override
 	public List<Camion> findByConductorIdAndEstado(ObjectId camioneroId, Estado estado) {
+		
+		System.out.println(camionRepo.findByConductorIdAndEstado(camioneroId, estado));
 		return camionRepo.findByConductorIdAndEstado(camioneroId, estado);
+		/*
+		if(usuarioServ.conductorPorId(camioneroId) != null) 
+			return camionRepo.findByConductorIdAndEstado(camioneroId, estado);
+		else
+			System.out.println("Id no pertenece a un conductor");
+			return null;
+		*/
 	}
 
 	@Override

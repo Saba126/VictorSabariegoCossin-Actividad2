@@ -1,5 +1,8 @@
 package mercatrans.model.service;
 
+import java.util.Optional;
+
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import mercatrans.model.repository.UsuarioRepository;
 import mercatrans.model.collections.Usuario;
+import mercatrans.model.collections.Usuario.Rol;
 
 /**
  * Implementación del servicio de usuarios.
@@ -98,6 +102,26 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public boolean existsByEmail(String email) {
 		return usrRepo.existsByEmail(email);
+	}
+
+	@Override
+	public Optional<Usuario> conductorPorId(ObjectId id) {
+		
+		return usrRepo.findById(id);
+		/*
+		Optional<Usuario> user = usrRepo.findById(id);
+		if(user.get().getRol() == Rol.CONDUCTOR)
+			return usrRepo.findById(id);
+		else {
+			System.out.println("Not A Conductor");
+			return null;
+		}*/
+	}
+
+	@Override
+	public Usuario buscarPorIdCamioneros(ObjectId id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	// TODO updateUsuario
