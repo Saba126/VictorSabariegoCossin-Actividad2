@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
-public interface InscripcionTranspoerteService {
+import mercatrans.model.collections.InscripcionTransporte;
 
-	List<InscripcionTranspoerteService> findByMercanciaId(ObjectId mercanciaId);
+public interface InscripcionTranspoerteService {
+	List<InscripcionTransporte> findByMercanciaId(ObjectId mercanciaId);
 }

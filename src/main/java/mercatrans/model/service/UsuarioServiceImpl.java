@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -26,10 +27,16 @@ import mercatrans.model.collections.Usuario.Rol;
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService{
 
+    private final SecurityFilterChain securityFilterChain;
+
 	@Autowired
 	private UsuarioRepository usrRepo;
 
     private final PasswordEncoder passwordEncoder;
+
+    UsuarioServiceImpl(SecurityFilterChain securityFilterChain) {
+        this.securityFilterChain = securityFilterChain;
+    }
 
 	/**
 	 * {@inheritDoc}
@@ -107,6 +114,13 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public Optional<Usuario> conductorPorId(ObjectId id) {
 		
+		Rol rol = Rol.CONDUCTOR;
+		
+		opcio
+		if (usrRepo.findById(id).get().getRol().equals(rol)) {
+			
+		}
+		
 		return usrRepo.findById(id);
 		/*
 		Optional<Usuario> user = usrRepo.findById(id);
@@ -116,12 +130,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 			System.out.println("Not A Conductor");
 			return null;
 		}*/
-	}
-
-	@Override
-	public Usuario buscarPorIdCamioneros(ObjectId id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	// TODO updateUsuario

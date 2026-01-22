@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import mercatrans.model.repository.CamionRepository;
 import mercatrans.model.repository.InscripcionTransporteRepository;
 import mercatrans.model.repository.MercanciaRepository;
+import mercatrans.model.collections.InscripcionTransporte;
 import mercatrans.model.collections.Mercancia;
 import mercatrans.model.collections.Mercancia.Estado;
 import mercatrans.model.collections.Usuario;
@@ -26,7 +27,7 @@ public class InscripcionTranspoerteServiceImpl implements InscripcionTranspoerte
 	private InscripcionTransporteRepository inscripcionRepo;
 
 	@Override
-	public List<InscripcionTranspoerteService> findByMercanciaId(ObjectId mercanciaId) {
+	public List<InscripcionTransporte> findByMercanciaId(ObjectId mercanciaId) {
 		//TODO devolver estado de la inscripcion
 		return inscripcionRepo.findByMercanciaId(mercanciaId);
 	}

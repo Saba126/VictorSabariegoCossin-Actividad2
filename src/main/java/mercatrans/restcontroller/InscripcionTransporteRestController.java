@@ -1,5 +1,7 @@
 package mercatrans.restcontroller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.bson.types.ObjectId;
@@ -11,20 +13,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mercatrans.seguridad.JwtSecurityService;
-import mercatrans.model.collections.dto.UsuarioRegisterDto;
-import mercatrans.model.service.CamionService;
 import mercatrans.model.service.InscripcionTranspoerteService;
-import mercatrans.model.service.UsuarioService;
-import mercatrans.model.collections.Usuario;
-import mercatrans.model.collections.Camion;
-import mercatrans.model.collections.Camion.Estado;
-import mercatrans.model.collections.dto.UsuarioLoginDto;
 
 @CrossOrigin(origins="*")
 @RestController
@@ -34,8 +26,13 @@ public class InscripcionTransporteRestController {
 	@Autowired
 	private InscripcionTranspoerteService inscripcionServ;
 	
+	
+	
+	// !!!!Este metodo se debe probar en Postman ya que swagger no lo entiende
+		
 	@GetMapping("/{mercanciaId}")
 	public ResponseEntity<?> findByMercanciaId(@PathVariable ObjectId mercanciaId){
+		
 		return ResponseEntity.status(200).body(inscripcionServ.findByMercanciaId(mercanciaId));			
 	}
 }

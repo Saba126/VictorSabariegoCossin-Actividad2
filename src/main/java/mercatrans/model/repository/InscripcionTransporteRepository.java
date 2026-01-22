@@ -9,6 +9,6 @@ import mercatrans.model.collections.InscripcionTransporte;
 import mercatrans.model.service.InscripcionTranspoerteService;
 
 public interface InscripcionTransporteRepository extends MongoRepository<InscripcionTransporte, ObjectId>{
-	List<InscripcionTranspoerteService> findByMercanciaId(ObjectId mercanciaId);
+	List<InscripcionTransporte> findByMercanciaId(ObjectId mercanciaId);
 
 }

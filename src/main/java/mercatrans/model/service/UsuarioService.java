@@ -51,6 +51,5 @@ public interface UsuarioService extends UserDetailsService{
     boolean existsByEmail(String email);
     
     Optional<Usuario> conductorPorId(ObjectId id);
-    
-    Usuario buscarPorIdCamioneros(ObjectId id);
+  
 }

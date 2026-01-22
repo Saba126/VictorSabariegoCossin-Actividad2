@@ -11,4 +11,5 @@ import mercatrans.model.collections.Camion.Estado;
 
 public interface CamionRepository extends MongoRepository<Camion, ObjectId>{
 	List<Camion> findByConductorIdAndEstado(ObjectId camioneroId, Estado estado);
+	
 }

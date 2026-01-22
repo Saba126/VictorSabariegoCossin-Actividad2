@@ -25,7 +25,37 @@ public class MercanciaServiceImpl implements MercanciaService{
 	private MercanciaRepository mercanciaRepo;
 
 	@Override
-	public 	List<Mercancia> findByEstado(Estado estado)	{
+	public 	List<Mercancia> findByEstadoEquals(Estado estado)	{
+		
 		return mercanciaRepo.findByEstado(estado);
+	}
+
+	@Override
+	public List<Mercancia> obatainPendientes() {
+		Estado estado = Estado.PENDIENTE;
+		return mercanciaRepo.findByEstado(estado);
+	}
+	
+	@Override
+	public boolean isValidInteger(String str) {
+	    if (str == null || str.isEmpty()) {
+	        return false;
+	    }
+	    for (int i = 0; i < str.length(); i++) {
+	        char c = str.charAt(i);
+	        if (i == 0) {
+	            continue; // Allow leading sign
+	        }
+	        if (!Character.isDigit(c)) {
+	            return false; // Found non-digit
+	        }
+	    }
+	    return true;
+	}   
+
+	@Override
+	public List<Mercancia> findByOrigenOrDestinoOrPeso(String origen, String destino, int peso) {
+		
+		return mercanciaRepo.findByOrigenOrDestinoOrPesoKg(origen, destino, peso);
 	}
 }

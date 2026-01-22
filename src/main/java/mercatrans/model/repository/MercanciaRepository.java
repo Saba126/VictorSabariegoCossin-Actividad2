@@ -10,4 +10,5 @@ import mercatrans.model.collections.Mercancia.Estado;
 
 public interface MercanciaRepository extends MongoRepository<Mercancia, ObjectId>{
 	List<Mercancia> findByEstado(Estado estado);
+	List<Mercancia> findByOrigenOrDestinoOrPesoKg(String origen, String destino, int peso);
 }

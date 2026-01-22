@@ -34,8 +34,6 @@ public class CamionServiceImpl implements CamionService{
 	
 	@Override
 	public List<Camion> findByConductorIdAndEstado(ObjectId camioneroId, Estado estado) {
-		
-		System.out.println(camionRepo.findByConductorIdAndEstado(camioneroId, estado));
 		return camionRepo.findByConductorIdAndEstado(camioneroId, estado);
 		/*
 		if(usuarioServ.conductorPorId(camioneroId) != null) 
@@ -53,6 +51,13 @@ public class CamionServiceImpl implements CamionService{
 			return todosCamiones;			
 		}else 
 			return null;
+	}
+
+	@Override
+	public Optional<Camion> FindBYConductorId(ObjectId camioneroId) {
+		usuarioServ.buscarPorIdCamioneros(camioneroId)
+		
+		return camionRepo.findById(camioneroId);
 	}
 
 }
